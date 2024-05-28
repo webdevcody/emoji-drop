@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Emoji } from "./emoji";
 import { useRef, useState } from "react";
+import { GithubIcon } from "./icons";
 
 export default function OtherPage() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -66,6 +67,9 @@ export default function OtherPage() {
           💥
         </button>
       </div>
+      <button className="rounded p-2 bg-slate-50 text-4xl absolute z-10 top-1 right-1">
+        <GithubIcon />
+      </button>
 
       {emojis?.map((emoji) => <Emoji key={emoji._id} emoji={emoji} />)}
     </div>
