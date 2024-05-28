@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm-run-all --parallel dev:frontend dev:backend",
+    "dev:frontend": "next dev --turbo",
+    "dev:backend": "convex dev --typecheck=disable",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +14,7 @@
     "bad-words": "^3.0.4",
     "convex": "^1.12.0",
     "next": "14.2.3",
+    "npm-run-all": "^4.1.5",
     "react": "^18",
     "react-dom": "^18"
   },
