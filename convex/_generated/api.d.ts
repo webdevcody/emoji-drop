@@ -14,6 +14,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as crons from "../crons.js";
 import type * as emoji from "../emoji.js";
 
 /**
@@ -25,6 +26,7 @@ import type * as emoji from "../emoji.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  crons: typeof crons;
   emoji: typeof emoji;
 }>;
 export declare const api: FilterApi<

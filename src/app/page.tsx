@@ -13,6 +13,15 @@ export default function OtherPage() {
   const clearAll = useMutation(api.emoji.clearAll);
   const [name, setName] = useState("");
 
+  function shakeScreen() {
+    if (wrapperRef.current) {
+      wrapperRef.current.classList.add("shake");
+      setTimeout(() => {
+        wrapperRef.current?.classList.remove("shake");
+      }, 1000);
+    }
+  }
+
   return (
     <div
       ref={wrapperRef}
@@ -31,6 +40,10 @@ export default function OtherPage() {
               name,
               startX: Math.random() * window.innerWidth,
               startY: Math.random() * window.innerHeight,
+            }).then((response) => {
+              if (response?.retryAt) {
+                shakeScreen();
+              }
             });
           }}
         >
@@ -54,13 +67,7 @@ export default function OtherPage() {
           title="delete all"
           onClick={() => {
             clearAll();
-
-            if (wrapperRef.current) {
-              wrapperRef.current.classList.add("shake");
-              setTimeout(() => {
-                wrapperRef.current?.classList.remove("shake");
-              }, 1000);
-            }
+            shakeScreen();
           }}
           className="bg-red-100 text-black px-4 py-1 rounded"
         >
